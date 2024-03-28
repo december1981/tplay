@@ -397,6 +397,8 @@ fn open_webp(path: &Path) -> Result<FrameIterator, MyError> {
     let mut buf = Vec::new();
     file.read_to_end(&mut buf)?;
     let mut frames = Vec::new();
+    // this code is based on the code example here:
+    // https://developers.google.com/speed/webp/docs/container-api#webpanimdecoder_api
     unsafe {
         let mut options = webp::WebPAnimDecoderOptions{
             color_mode: webp::WEBP_CSP_MODE::MODE_RGBA,
